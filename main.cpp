@@ -142,9 +142,9 @@ int main(int argc, char* argv[])
 	while (true)
 	{
 		times++;
-		if (times > 1000)
+		if (times > 100000)
 		{
-			SKCommon::errorOutput("No answer in 1000 steps");
+			SKCommon::errorOutput("No answer in 100000 steps");
 			system("pause");
 			return 0;
 		}
