@@ -1,0 +1,10 @@
+.vscode
+build/
+*.tmp
+*.TMP
+builds/
+buildIOI/
+build*/
+*.aliases
+*.lvlps
+*.asv
