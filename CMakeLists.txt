@@ -69,7 +69,7 @@ add_executable(${name}
 #     )
 
 SET(SK_MAJOR_VERSION "1")
-SET(SK_MINOR_VERSION "0")
+SET(SK_MINOR_VERSION "1")
 add_definitions( -D__SK_MAJOR_VERSION__=${SK_MAJOR_VERSION})
 add_definitions( -D__SK_MINOR_VERSION__=${SK_MINOR_VERSION})
 SET(SK_VERSION_NAME __skversion__)

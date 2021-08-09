@@ -12,13 +12,18 @@ struct PuzzuleConfig
 	std::vector<int> stats;
 	bool found = false;
 	std::vector<string> ans;
+	bool zeroMode = false;
 } puconf;
 
 std::queue<PuzzuleConfig> stat_queue;
 
-bool checkStat(std::vector<int> status)
+bool checkStat(std::vector<int> status, bool zeroMode = false)
 {
-	auto t = status[0];
+	int t;
+	if(zeroMode)
+		t = 0;
+	else
+		t = status[0];
 	for (int i = 0; i < status.size(); i++)
 		if (t != status[i])
 			return false;
@@ -46,7 +51,7 @@ PuzzuleConfig achiveAns()
 	stat_queue.pop();
 
 
-	if (checkStat(this_status.stats))
+	if (checkStat(this_status.stats, this_status.zeroMode))
 	{
 		this_status.found = true;
 		return this_status;
@@ -110,6 +115,7 @@ int main(int argc, char* argv[])
 	puconf.mode = ini.GetInteger("GLOBAL", "Mode", 0);
 	puconf.stat_max = ini.GetInteger("GLOBAL", "StatMax", 3);
 	puconf.count = ini.GetInteger("GLOBAL", "Count", 3);
+	puconf.zeroMode = ini.GetBoolean("GLOBAL", "ZeroMode", false);
 	auto conStr = ini.Get("GLOBAL", "Stat", "000");
 	if (puconf.count != conStr.size() || puconf.count <= 2)
 	{
